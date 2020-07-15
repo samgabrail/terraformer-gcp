@@ -45,5 +45,5 @@ resource "google_compute_instance" "tfer--terraformer-002D-test" {
     enable_vtpm                 = "true"
   }
 
-  zone = "us-central1-f"
+  zone = "us-central1-a"
 }

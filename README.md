@@ -45,3 +45,9 @@ terraformer import google --compact --projects=sam-gabrail-gcp-demos --resources
 2. Run `terraform init`
 3. Run `terraform plan`, you'll notice no changes because the state file was imported successfully and the configuration file matches nicely.
 4. You could make changes to the config file if you wish and then run `terraform apply`. Do note that there are some config options that you'll need to delete from the auto-generated config files as they become static. For example if you import an instance sitting in one zone and you want to re-create the instance in another zone, you'll have to delete the IP address that got generated because it's specific to the original zone.
+5. If you want to move from OSS to TFC or TFE, you can use the CLI driven workflow. To do that do the following:
+  a. You need to create a workspace in TFC and don't connect it to VCS.
+  b. Make sure to add the remote backend stanza to the tf config.
+  c. Make sure you have your TFC token inside of .terraformrc in the home directory. 
+  d. Run `terraform init` this will migrate the state file from local to TFC/TFE
+  e. You may need to remove the local state file after the migration
